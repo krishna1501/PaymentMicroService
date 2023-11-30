@@ -11,17 +11,17 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/payment")
 public class PaymentController {
-    @Autowired
-    PaymentService paymentService;
+	@Autowired
+	PaymentService paymentService;
 
-    @PostMapping("/doPayment")
-    public ResponseEntity<Long> doPayment(@RequestBody PaymentRequest paymentRequest) {
-        return new ResponseEntity<> (paymentService.doPayment(paymentRequest), HttpStatus.OK);
+	@PostMapping("/doPayment")
+	public ResponseEntity<Long> doPayment(@RequestBody PaymentRequest paymentRequest) {
+		return new ResponseEntity<>(paymentService.doPayment(paymentRequest), HttpStatus.OK);
 
-    }
+	}
 
-    @GetMapping("/order/{orderId}")
-    public ResponseEntity<PaymentResponse> getPaymentDetailsByOrderId(@PathVariable long orderId){
-        return new ResponseEntity<>(paymentService.getPaymentDetailsByOrderId(orderId),HttpStatus.OK);
-    }
+	@GetMapping("/order/{orderId}")
+	public ResponseEntity<PaymentResponse> getPaymentDetailsByOrderId(@PathVariable long orderId) {
+		return new ResponseEntity<>(paymentService.getPaymentDetailsByOrderId(orderId), HttpStatus.OK);
+	}
 }
